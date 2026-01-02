@@ -13,19 +13,19 @@ const aboutmeData = {
       media: [
         {
           type: "img",
-          src: "images/Travel_1.jpg",
+          src: "images/Travel_1.JPG",
           title: "",
           text: "Mount Everest (Qomolangma)  Dec 2024, Tibet"
         },
         {
           type: "img",
-          src: "images/Travel_2.jpg",
+          src: "images/Travel_2.JPG",
           title: "",
           text: "Namtso (Nam Co) Lake   Jan 2025, Tibet"
         },
         {
           type: "img",
-          src: "images/Travel_5.jpg",
+          src: "images/Travel_5.JPG",
           title: "",
           text: "Sayram Lake(Sailimu Lake)  Jan 2024, Xinjiang"
         }
@@ -38,13 +38,13 @@ const aboutmeData = {
       media: [
         {
           type: "img",
-          src: "images/Friend_1.jpg",
+          src: "images/Friend_1.JPG",
           title: "",
           text: ""
         },
         {
           type: "img",
-          src: "images/Friend_2.jpg",
+          src: "images/Friend_2.JPG",
           title: "",
           text: ""
         },
@@ -57,13 +57,13 @@ const aboutmeData = {
       media: [
         {
           type: "img",
-          src: "images/Photo_1.jpg",
+          src: "images/Photo_1.JPG",
           title: "",
           text: ""
         },
         {
           type: "img",
-          src: "images/Photo_2.jpg",
+          src: "images/Photo_2.JPG",
           title: "",
           text: ""
         },
@@ -75,7 +75,7 @@ const aboutmeData = {
       media: [
         {
           type: "img",
-          src: "images/Sports_1.jpg",
+          src: "images/Sports_1.JPG",
           title: "Training Squad",
           text: "2021 Aug  · Wuhan Evening News Cup — training squad photo (I’m the one on the leftmost in the second row)"
         },
