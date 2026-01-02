@@ -224,14 +224,22 @@ ul.bullet-list { list-style-type: disc; margin-left: 20px; color: #444; font-siz
    =========================== */
 @media (max-width: 1000px) {
 
+    /* ✅ header/nav 不要固定高度，否则菜单展开会溢出压住正文 */
+    header { height: auto; }
+    nav {
+        padding: 10px 16px;
+        height: auto;
+        position: relative;     /* 给 dropdown 做定位 */
+        flex-wrap: nowrap;
+    }
+
     /* 页面从左右两列改成上下 */
     .container {
         flex-direction: column;
         gap: 24px;
-        padding: 18px 16px; /* ✅ 修复你之前 padding:0 造成“顶上导航被挤没”的错觉 */
+        padding: 18px 16px;
     }
 
-    /* 侧边栏不要 sticky，且居中显示 */
     .sidebar {
         width: 100%;
         text-align: center;
@@ -240,25 +248,37 @@ ul.bullet-list { list-style-type: disc; margin-left: 20px; color: #444; font-siz
     }
 
     .profile-img { margin-left: auto; margin-right: auto; }
-
-    /* main 内容缩小内边距 */
     .main-content { padding: 22px 18px; }
 
-    /* nav 缩紧左右 padding */
-    nav { padding: 0 16px; }
-
-    /* ✅ 手机上不再隐藏 nav-links，而是变成可展开菜单 */
+    /* ✅ 手机端显示汉堡按钮 */
     .nav-brand { width: auto; }
-    .nav-toggle { display: inline-flex; }
+    .nav-toggle {
+        display: inline-flex;
+        margin-left: auto;
+    }
 
+    /* ✅ 下拉菜单：默认隐藏；展开时作为 dropdown 出现（有白底，不透明） */
     .nav-links {
-        display: none;            /* 默认收起 */
-        width: 100%;
+        display: none;
+        position: absolute;
+        top: 100%;              /* 紧贴 nav 底部 */
+        left: 0;
+        right: 0;
+
+        background: rgba(255, 255, 255, 0.98);  /* ✅ 不透明白底 */
+        backdrop-filter: blur(10px);
+
+        border-bottom: 1px solid #eaeaea;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+
         margin-left: 0;
+        padding: 10px 12px 14px;
+
         flex-direction: column;
         align-items: stretch;
         gap: 8px;
-        padding: 10px 0 14px;
+
+        z-index: 9999;          /* ✅ 确保盖在内容上 */
     }
 
     .nav-btn {
@@ -267,15 +287,9 @@ ul.bullet-list { list-style-type: disc; margin-left: 20px; color: #444; font-siz
         border-radius: 10px;
     }
 
-    /* ✅ 给 nav 一个打开状态：nav.nav-open */
-    nav.nav-open {
-        flex-wrap: wrap;
-    }
+    /* ✅ 打开状态 */
     nav.nav-open .nav-links {
         display: flex;
     }
 }
-
-/* ✅ 防止移动端“点不了链接”：避免莫名其妙的透明层抢点击 */
-* { -webkit-tap-highlight-color: transparent; }
 
