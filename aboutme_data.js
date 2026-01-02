@@ -1,5 +1,6 @@
 // aboutme_data.js
-const aboutmeData = {
+// IMPORTANT: expose to global so main.js can always access it
+window.aboutmeData = {
   intro: [
     "Outside of research, I have a lot of interests — the sections below are just the ones I most want to share.",
     "I like traveling to new places, hanging out with friends (and the occasional meetups with classmates), taking photos, staying active, and listening to music.",
@@ -58,6 +59,3 @@ const aboutmeData = {
     }
   ]
 };
-
-// 如果你的 main.js 里是直接用 aboutmeData（全局变量），这就够了。
-// 不要在这里 export / import，保持全局常量即可。
