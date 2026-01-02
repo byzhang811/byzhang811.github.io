@@ -7,7 +7,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f4f6f9; 
+    background-color: #f4f6f9;
 }
 
 a { color: #0066cc; text-decoration: none; transition: color 0.2s; }
@@ -16,28 +16,27 @@ a:hover { color: #004494; text-decoration: none; }
 /* --- 顶部导航栏 --- */
 header {
     background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px); 
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid #eaeaea;
-    position: sticky; 
+    position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 9999; /* ✅ 提高层级，避免手机端被内容盖住 */
     width: 100%;
-    /* 【修改】固定高度，方便计算 */
-    height: 80px; 
-    /* 保证内容垂直居中 */
+    height: 80px;
     display: flex;
-    align-items: center; 
+    align-items: center;
 }
 
 nav {
     max-width: 1450px;
-    width: 100%; /* 确保占满 */
+    width: 100%;
     margin: 0 auto;
     padding: 0 40px;
-    height: 100%; /* 继承 header 高度 */
+    height: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    gap: 12px;
 }
 
 /* 名字 (Logo) */
@@ -46,15 +45,27 @@ nav {
     font-size: 1.4rem;
     color: #222;
     cursor: pointer;
-    width: 240px; 
+    width: 240px;
     flex-shrink: 0;
+}
+
+/* ✅ 手机端汉堡按钮（默认隐藏，移动端显示） */
+.nav-toggle {
+    display: none;
+    margin-left: auto;
+    border: 0;
+    background: transparent;
+    font-size: 22px;
+    padding: 10px 12px;
+    cursor: pointer;
+    color: #333;
 }
 
 /* 导航链接组 */
 .nav-links {
     display: flex;
     align-items: center;
-    margin-left: 60px; 
+    margin-left: 60px;
     gap: 15px;
 }
 
@@ -62,7 +73,7 @@ nav {
     font-size: 1rem;
     color: #555;
     font-weight: 500;
-    padding: 8px 20px; 
+    padding: 8px 20px;
     border-radius: 6px;
     transition: all 0.2s ease;
 }
@@ -79,11 +90,8 @@ nav {
 /* --- 核心布局 --- */
 .container {
     max-width: 1450px;
-    /* 【核心修复 1】把 margin-top 改为 0，防止侧边栏初始位置下移 */
     margin: 0 auto;
-    /* 改用 padding-top 来制造间距 */
-    padding: 40px 40px; 
-    
+    padding: 40px 40px;
     display: flex;
     gap: 60px;
     align-items: flex-start;
@@ -91,19 +99,14 @@ nav {
 
 /* --- 左侧侧边栏 (Sidebar) --- */
 .sidebar {
-    width: 240px; 
+    width: 240px;
     flex-shrink: 0;
     text-align: left;
-    
-    position: sticky; 
-    
-    /* 【核心修复 2】精确计算吸附位置 */
-    /* Header高度(80px) + Container Padding(40px) = 120px */
-    /* 我们设置 top: 100px，意味着它会稍微往上顶一点点然后卡住，或者直接设为 120px 让它原地不动 */
-    /* 这里设为 80px + 30px 间距 = 110px，让视觉上稍微舒服点，且因为 margin 没了，它不会乱动 */
-    top: 110px; 
-    
-    height: fit-content; 
+
+    position: sticky;
+    top: 110px; /* Header(80) + 视觉间距(30) */
+
+    height: fit-content;
 }
 
 .profile-img {
@@ -113,7 +116,7 @@ nav {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 25px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1); 
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     border: 5px solid #fff;
 }
 
@@ -130,11 +133,11 @@ nav {
 .main-content {
     flex-grow: 1;
     max-width: 100%;
-    
+
     background-color: #fff;
-    padding: 50px 60px; 
+    padding: 50px 60px;
     border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.04); 
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
     border: 1px solid rgba(0,0,0,0.02);
 }
 
@@ -153,8 +156,8 @@ ul.bullet-list { list-style-type: disc; margin-left: 20px; color: #444; font-siz
 /* --- Publications 专属样式 --- */
 .pub-grid {
     display: grid;
-    grid-template-columns: 1fr; 
-    gap: 50px; 
+    grid-template-columns: 1fr;
+    gap: 50px;
     margin-bottom: 50px;
 }
 
@@ -178,18 +181,18 @@ ul.bullet-list { list-style-type: disc; margin-left: 20px; color: #444; font-siz
 
 .pub-img-wrapper {
     width: 100%;
-    height: 380px; 
+    height: 380px;
     overflow: hidden;
     position: relative;
     border-bottom: 1px solid #f0f0f0;
-    background-color: #f8f9fa; 
+    background-color: #f8f9fa;
 }
 
 .pub-img-wrapper img {
     width: 100%;
     height: 100%;
-    object-fit: contain; 
-    filter: grayscale(100%); 
+    object-fit: contain;
+    filter: grayscale(100%);
     transition: filter 0.4s ease, transform 0.5s ease;
 }
 
@@ -216,12 +219,63 @@ ul.bullet-list { list-style-type: disc; margin-left: 20px; color: #444; font-siz
 .btn-download { display: inline-block; background-color: #374151; color: #fff; padding: 12px 28px; border-radius: 8px; font-weight: 500; font-size: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 .btn-download:hover { background-color: #1f2937; transform: translateY(-2px); color: #fff; }
 
-/* 手机适配 */
+/* ===========================
+   ✅ 手机/平板适配（关键修复）
+   =========================== */
 @media (max-width: 1000px) {
-    .container { flex-direction: column; gap: 40px; padding: 0 20px; }
-    nav { padding: 0 20px; }
-    .sidebar { width: 100%; text-align: center; position: static; }
-    .nav-links { display: none; }
-    .main-content { padding: 30px; }
+
+    /* 页面从左右两列改成上下 */
+    .container {
+        flex-direction: column;
+        gap: 24px;
+        padding: 18px 16px; /* ✅ 修复你之前 padding:0 造成“顶上导航被挤没”的错觉 */
+    }
+
+    /* 侧边栏不要 sticky，且居中显示 */
+    .sidebar {
+        width: 100%;
+        text-align: center;
+        position: static;
+        top: auto;
+    }
+
+    .profile-img { margin-left: auto; margin-right: auto; }
+
+    /* main 内容缩小内边距 */
+    .main-content { padding: 22px 18px; }
+
+    /* nav 缩紧左右 padding */
+    nav { padding: 0 16px; }
+
+    /* ✅ 手机上不再隐藏 nav-links，而是变成可展开菜单 */
     .nav-brand { width: auto; }
+    .nav-toggle { display: inline-flex; }
+
+    .nav-links {
+        display: none;            /* 默认收起 */
+        width: 100%;
+        margin-left: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 10px 0 14px;
+    }
+
+    .nav-btn {
+        display: block;
+        padding: 10px 12px;
+        border-radius: 10px;
+    }
+
+    /* ✅ 给 nav 一个打开状态：nav.nav-open */
+    nav.nav-open {
+        flex-wrap: wrap;
+    }
+    nav.nav-open .nav-links {
+        display: flex;
+    }
 }
+
+/* ✅ 防止移动端“点不了链接”：避免莫名其妙的透明层抢点击 */
+* { -webkit-tap-highlight-color: transparent; }
+
