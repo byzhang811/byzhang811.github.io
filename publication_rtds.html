@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RTDS | Publication Detail</title>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ===== Detail Page (clean + robust placeholders) ===== */
+    .detail-header { border-bottom: 1px solid #eee; padding-bottom: 18px; margin-bottom: 26px; }
+    .detail-title { font-size: 1.85rem; font-weight: 800; color: #222; margin: 0 0 8px; line-height: 1.25; }
+    .detail-meta { color: #666; font-style: italic; margin-bottom: 14px; line-height: 1.5; }
+
+    .btn-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px; background: #0066cc; color: #fff;
+      border-radius: 6px; text-decoration: none; margin-right: 10px;
+      font-weight: 600; font-size: 0.92rem;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .btn-link:hover { background-color: #0052a3; color: #fff; }
+    .btn-github { background-color: #222; }
+    .btn-github:hover { background-color: #000; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-bottom: 14px; font-size: 0.92rem; text-decoration: none;
+      color: #2b2b2b;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    .detail-content h3 {
+      font-size: 1.25rem; color: #222;
+      margin: 28px 0 12px;
+      border-left: 4px solid #0066cc;
+      padding-left: 10px;
+    }
+    .detail-content p { margin: 0 0 14px; text-align: justify; line-height: 1.85; color: #444; }
+
+    /* ===== Figure Placeholder Logic =====
+       - When img src is empty: hide img, show placeholder
+       - When img src is non-empty: show img, hide placeholder
+    */
+    figure.detail-fig-box { margin: 18px 0 26px; }
+    .detail-fig-box .fig-wrap { position: relative; width: 100%; }
+
+    .detail-fig-box img {
+      width: 100%;
+      max-width: 980px;
+      display: block;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      border: 1px solid #eee;
+      background: #fff;
+    }
+
+    /* hide broken image */
+    .detail-fig-box img[src=""] { display: none; }
+    .detail-fig-box img:not([src]) { display: none; }
+
+    .figure-placeholder {
+      max-width: 980px;
+      margin: 0 auto;
+      border-radius: 10px;
+      border: 2px dashed #cfcfcf;
+      background: #fafafa;
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8a8a8a;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      user-select: none;
+    }
+
+    /* If src is non-empty, hide placeholder */
+    .detail-fig-box img[src]:not([src=""]) ~ .figure-placeholder { display: none; }
+
+    figcaption.fig-caption {
+      font-size: 0.92rem; color: #666;
+      margin-top: 10px; font-style: italic;
+      text-align: center;
+      min-height: 1.1em; /* keep layout stable even if empty */
+    }
+
+    /* optional: small section divider */
+    .soft-divider { height: 1px; background: #f0f0f0; margin: 18px 0; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="index.html" class="nav-brand">Boyang Zhang</a>
+      <div class="nav-links">
+        <a href="publications.html" class="nav-btn active">Publications</a>
+        <a href="research.html" class="nav-btn">Research</a>
+        <a href="news.html" class="nav-btn">News</a>
+        <a href="aboutme.html" class="nav-btn">AboutMe</a>
+        <a href="contact.html" class="nav-btn">Contact</a>
+     </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar" id="sidebar-container"></aside>
+
+    <main class="main-content" id="rtds-detail-page">
+      <a href="publications.html" class="back-link">
+        <span aria-hidden="true">&larr;</span> Back to Publications
+      </a>
+
+      <div class="detail-header">
+        <h1 class="detail-title" id="p-title">Loading...</h1>
+        <div class="detail-meta" id="p-meta">Loading...</div>
+        <div id="p-links"></div>
+      </div>
+
+      <div class="detail-content">
+        <h3>Abstract</h3>
+        <p id="p-abstract">Loading...</p>
+
+        <div class="soft-divider"></div>
+
+        <h3>Figures</h3>
+
+        <!-- Figure 1 Placeholder (no caption text yet) -->
+        <figure class="detail-fig-box">
+          <div class="fig-wrap">
+            <img id="p-img" src="" alt="" />
+            <div class="figure-placeholder" aria-label="Figure placeholder">Figure 1</div>
+          </div>
+          <figcaption class="fig-caption" id="p-caption"></figcaption>
+        </figure>
+
+        <div id="p-more-details"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="sidebar_data.js"></script>
+  <script src="pub_rtds_data.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

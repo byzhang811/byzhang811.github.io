@@ -1,0 +1,227 @@
+/* style.css */
+
+/* --- 全局设置 --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f6f9; 
+}
+
+a { color: #0066cc; text-decoration: none; transition: color 0.2s; }
+a:hover { color: #004494; text-decoration: none; }
+
+/* --- 顶部导航栏 --- */
+header {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); 
+    border-bottom: 1px solid #eaeaea;
+    position: sticky; 
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    /* 【修改】固定高度，方便计算 */
+    height: 80px; 
+    /* 保证内容垂直居中 */
+    display: flex;
+    align-items: center; 
+}
+
+nav {
+    max-width: 1450px;
+    width: 100%; /* 确保占满 */
+    margin: 0 auto;
+    padding: 0 40px;
+    height: 100%; /* 继承 header 高度 */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* 名字 (Logo) */
+.nav-brand {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #222;
+    cursor: pointer;
+    width: 240px; 
+    flex-shrink: 0;
+}
+
+/* 导航链接组 */
+.nav-links {
+    display: flex;
+    align-items: center;
+    margin-left: 60px; 
+    gap: 15px;
+}
+
+.nav-btn {
+    font-size: 1rem;
+    color: #555;
+    font-weight: 500;
+    padding: 8px 20px; 
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.nav-btn:hover, .nav-btn.active {
+    color: #0066cc;
+    background-color: #eef4fc;
+}
+
+.fa-cog { color: #999; cursor: pointer; margin-left: 20px; transition: color 0.2s; }
+.fa-cog:hover { color: #555; }
+
+
+/* --- 核心布局 --- */
+.container {
+    max-width: 1450px;
+    /* 【核心修复 1】把 margin-top 改为 0，防止侧边栏初始位置下移 */
+    margin: 0 auto;
+    /* 改用 padding-top 来制造间距 */
+    padding: 40px 40px; 
+    
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+/* --- 左侧侧边栏 (Sidebar) --- */
+.sidebar {
+    width: 240px; 
+    flex-shrink: 0;
+    text-align: left;
+    
+    position: sticky; 
+    
+    /* 【核心修复 2】精确计算吸附位置 */
+    /* Header高度(80px) + Container Padding(40px) = 120px */
+    /* 我们设置 top: 100px，意味着它会稍微往上顶一点点然后卡住，或者直接设为 120px 让它原地不动 */
+    /* 这里设为 80px + 30px 间距 = 110px，让视觉上稍微舒服点，且因为 margin 没了，它不会乱动 */
+    top: 110px; 
+    
+    height: fit-content; 
+}
+
+.profile-img {
+    width: 100%;
+    max-width: 220px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1); 
+    border: 5px solid #fff;
+}
+
+.sidebar-name { font-size: 1.3rem; font-weight: 700; color: #111; margin-bottom: 5px; }
+.sidebar-title { font-size: 0.95rem; color: #555; margin-bottom: 15px; line-height: 1.4; }
+.sidebar-school { font-size: 0.9rem; color: #666; margin-bottom: 25px; line-height: 1.4; }
+
+.sidebar-info { list-style: none; font-size: 0.95rem; color: #555; }
+.sidebar-info li { margin-bottom: 14px; display: flex; align-items: center; }
+.sidebar-info i { width: 24px; margin-right: 12px; color: #777; text-align: center; font-size: 1.1rem; }
+
+
+/* --- 右侧主要内容 (Main Content) --- */
+.main-content {
+    flex-grow: 1;
+    max-width: 100%;
+    
+    background-color: #fff;
+    padding: 50px 60px; 
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04); 
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.main-header-name { font-size: 2.5rem; font-weight: 700; margin-bottom: 8px; color: #111; letter-spacing: -0.5px;}
+.main-header-title { font-size: 1.2rem; font-weight: 600; color: #444; margin-bottom: 5px; }
+.main-header-dept { font-style: italic; color: #777; margin-bottom: 35px; font-size: 1.05rem; }
+.bio-text p { margin-bottom: 20px; text-align: justify; color: #333; font-size: 1.05rem; line-height: 1.7; }
+.section-title { font-size: 1.6rem; font-weight: 700; margin-top: 60px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #f0f0f0; color: #222; letter-spacing: -0.3px; }
+
+/* 列表样式 */
+.content-list li { margin-bottom: 30px; }
+.list-header { font-weight: 700; color: #111; font-size: 1.1rem; margin-bottom: 6px; }
+.list-sub { color: #666; font-style: italic; margin-bottom: 10px; font-size: 1rem;}
+ul.bullet-list { list-style-type: disc; margin-left: 20px; color: #444; font-size: 1rem; line-height: 1.7; }
+
+/* --- Publications 专属样式 --- */
+.pub-grid {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 50px; 
+    margin-bottom: 50px;
+}
+
+.pub-card {
+    display: block;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+    cursor: pointer;
+}
+
+.pub-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    border-color: #dbeafe;
+}
+
+.pub-img-wrapper {
+    width: 100%;
+    height: 380px; 
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid #f0f0f0;
+    background-color: #f8f9fa; 
+}
+
+.pub-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    filter: grayscale(100%); 
+    transition: filter 0.4s ease, transform 0.5s ease;
+}
+
+.pub-card:hover .pub-img-wrapper img {
+    filter: grayscale(0%);
+    transform: scale(1.02);
+}
+
+.pub-content { padding: 30px; }
+.pub-title { font-size: 1.5rem; font-weight: 700; color: #222; margin-bottom: 10px; }
+.pub-card:hover .pub-title { color: #0066cc; }
+.pub-meta { font-size: 1rem; color: #666; margin-bottom: 15px; font-style: italic; }
+.pub-keywords { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+.keyword-tag { background-color: #f1f5f9; color: #475569; font-size: 0.9rem; padding: 6px 12px; border-radius: 6px; border: 1px solid #e2e8f0; }
+
+/* Research 页面 */
+.project-block { margin-bottom: 50px; border: 1px solid #f0f0f0; padding: 30px; border-radius: 12px; background: #fafafa;}
+.proj-title { font-size: 1.4rem; font-weight: 700; color: #222; margin-bottom: 8px; }
+.proj-desc p { font-size: 1rem; }
+
+/* Footer */
+.footer-section { margin-top: 80px; padding-top: 30px; border-top: 2px solid #f5f5f5; }
+.footer-note { font-style: italic; color: #666; margin-bottom: 25px; font-size: 1rem; }
+.btn-download { display: inline-block; background-color: #374151; color: #fff; padding: 12px 28px; border-radius: 8px; font-weight: 500; font-size: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.btn-download:hover { background-color: #1f2937; transform: translateY(-2px); color: #fff; }
+
+/* 手机适配 */
+@media (max-width: 1000px) {
+    .container { flex-direction: column; gap: 40px; padding: 0 20px; }
+    nav { padding: 0 20px; }
+    .sidebar { width: 100%; text-align: center; position: static; }
+    .nav-links { display: none; }
+    .main-content { padding: 30px; }
+    .nav-brand { width: auto; }
+}

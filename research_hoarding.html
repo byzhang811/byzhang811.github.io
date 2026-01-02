@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoarding Assessment | Research</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 复用之前的详情页样式 */
+        .detail-header { border-bottom: 1px solid #eee; padding-bottom: 20px; margin-bottom: 30px; }
+        .detail-title { font-size: 1.8rem; font-weight: 700; color: #333; margin-bottom: 10px; }
+        .detail-meta { color: #666; font-style: italic; margin-bottom: 20px; line-height: 1.6; }
+        .btn-link { display: inline-block; padding: 8px 16px; background: #0066cc; color: #fff; border-radius: 4px; text-decoration: none; margin-right: 10px; font-weight: 500; font-size: 0.9rem; }
+        .btn-link:hover { background-color: #0052a3; color: #fff; }
+        .btn-github { background-color: #333; }
+        .btn-github:hover { background-color: #000; }
+        .detail-fig-box { margin: 30px 0; text-align: center; background-color: #f8f9fa; padding: 20px 0; border-radius: 8px; border: 1px solid #eee; }
+        .detail-fig-box img { max-height: 500px; max-width: 100%; width: auto; height: auto; object-fit: contain; border-radius: 4px; }
+        .fig-caption { font-size: 0.9rem; color: #666; margin-top: 10px; font-style: italic; }
+        .detail-content h3 { font-size: 1.4rem; color: #333; margin-top: 30px; margin-bottom: 15px; border-left: 4px solid #0066cc; padding-left: 10px; }
+        .detail-content p { margin-bottom: 15px; text-align: justify; line-height: 1.8; color: #444; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="nav-brand">Boyang Zhang</a>
+            <div class="nav-links">
+                <a href="publications.html" class="nav-btn">Publications</a>
+                <a href="research.html" class="nav-btn active">Research</a>
+                <a href="news.html" class="nav-btn">News</a>
+                <a href="aboutme.html" class="nav-btn">AboutMe</a>
+                <a href="contact.html" class="nav-btn">Contact</a>
+                <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+  <i class="fas fa-cog"></i>
+</button>            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar" id="sidebar-container"></aside>
+        
+        <main class="main-content" id="research-detail-page">
+            <a href="research.html" style="display:inline-block; margin-bottom:15px; font-size:0.9rem;">&larr; Back to Research</a>
+
+            <div class="detail-header">
+                <h1 class="detail-title" id="p-title">Loading...</h1>
+                <div class="detail-meta" id="p-meta">Loading...</div>
+                <div id="p-links"></div>
+            </div>
+
+            <div class="detail-content">
+                <h3>Abstract</h3>
+                <p id="p-abstract">Loading...</p>
+                
+                <div class="detail-fig-box">
+                    <img id="p-img" src="" alt="Project Figure">
+                    <p class="fig-caption" id="p-caption"></p>
+                </div>
+                
+                <div id="p-more-details"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="sidebar_data.js"></script>
+    <script src="research_hoarding_data.js"></script> 
+    <script src="main.js"></script>
+</body>
+</html>
