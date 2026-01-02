@@ -11,9 +11,9 @@ const aboutmeData = {
       title: "Travel",
       desc: "I love trying new things — going to new places, experiencing different ways of life, and taking in fresh landscapes along the way.",
       media: [
-        { type: "img", src: "images/Travel_1.jpg", title: "", text: "Mount Everest (Qomolangma)  Dec 2024, Tibet" },
-        { type: "img", src: "images/Travel_2.jpg", title: "", text: "Namtso (Nam Co) Lake   Jan 2025, Tibet" },
-        { type: "img", src: "images/Travel_5.jpg", title: "", text: "Sayram Lake (Sailimu Lake)  Jan 2024, Xinjiang" }
+        { type: "img", src: "images/Travel_1.JPG", title: "", text: "Mount Everest (Qomolangma)  Dec 2024, Tibet" },
+        { type: "img", src: "images/Travel_2.JPG", title: "", text: "Namtso (Nam Co) Lake   Jan 2025, Tibet" },
+        { type: "img", src: "images/Travel_5.JPG", title: "", text: "Sayram Lake (Sailimu Lake)  Jan 2024, Xinjiang" }
       ]
     },
 
@@ -21,8 +21,8 @@ const aboutmeData = {
       title: "People & Moments",
       desc: "I really enjoy spending time with my friends, and I like keeping small snapshots of those moments — the laughs, the walks, and everything in between.",
       media: [
-        { type: "img", src: "images/Friend_1.jpg", title: "", text: "" },
-        { type: "img", src: "images/Friend_2.jpg", title: "", text: "" }
+        { type: "img", src: "images/Friend_1.JPG", title: "", text: "" },
+        { type: "img", src: "images/Friend_2.JPG", title: "", text: "" }
       ]
     },
 
@@ -30,8 +30,8 @@ const aboutmeData = {
       title: "Photography",
       desc: "I shoot with a Panasonic Lumix S5II full-frame camera, and I love documenting natural landscapes — clean light, quiet scenes, and the way places feel.",
       media: [
-        { type: "img", src: "images/Photo_1.jpg", title: "", text: "" },
-        { type: "img", src: "images/Photo_2.jpg", title: "", text: "" }
+        { type: "img", src: "images/Photo_1.JPG", title: "", text: "" },
+        { type: "img", src: "images/Photo_2.JPG", title: "", text: "" }
       ]
     },
 
@@ -41,7 +41,7 @@ const aboutmeData = {
       media: [
         {
           type: "img",
-          src: "images/Sports_1.jpg",
+          src: "images/Sports_1.JPG",
           title: "Training Squad",
           text: "2021 Aug · Wuhan Evening News Cup — training squad photo (I’m the one on the leftmost in the second row)"
         }
