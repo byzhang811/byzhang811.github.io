@@ -1,6 +1,9 @@
 // main.js
 
 document.addEventListener('DOMContentLoaded', () => {
+  // ✅ Mobile nav toggle (safe, won't break desktop)
+  safeRun(initMobileNav);
+
   safeRun(renderSidebar);
 
   if (document.getElementById('home-content')) safeRun(renderHome);
@@ -13,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('rtds-detail-page')) safeRun(renderRTDSDetail);
   if (document.getElementById('research-detail-page')) safeRun(renderResearchDetail);
 
-  // New pages
+  // News
   if (document.getElementById('news-list')) safeRun(renderNews);
 
   // AboutMe (support both ids)
@@ -24,6 +27,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function safeRun(fn) {
   try { fn(); } catch (e) { console.error(`[main.js] ${fn.name} failed:`, e); }
+}
+
+/* =========================
+   ✅ Mobile Nav Toggle
+   - requires: <button class="nav-toggle">☰</button> in each page header
+   - requires: CSS uses nav.nav-open .nav-links { display:flex; } on mobile
+========================= */
+function initMobileNav() {
+  const nav = document.querySelector('header nav');
+  const btn = document.querySelector('.nav-toggle');
+  const linksWrap = document.querySelector('.nav-links');
+
+  if (!nav || !btn || !linksWrap) return;
+
+  // toggle open/close
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    nav.classList.toggle('nav-open');
+  });
+
+  // click any link -> close
+  linksWrap.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => nav.classList.remove('nav-open'));
+  });
+
+  // click outside -> close (mobile-friendly)
+  document.addEventListener('click', (e) => {
+    const target = e.target;
+    if (!target) return;
+    if (nav.contains(target)) return;
+    nav.classList.remove('nav-open');
+  });
+
+  // resize to desktop -> ensure menu not stuck
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1000) nav.classList.remove('nav-open');
+  });
 }
 
 /* =========================
@@ -392,7 +432,6 @@ function renderNews() {
    AboutMe — robust + no placeholders
 ========================= */
 function getAboutMeData() {
-  // ✅ accept multiple names to avoid you being stuck on one variable name
   return (typeof aboutmeData !== "undefined" && aboutmeData)
       || (typeof mylifeData !== "undefined" && mylifeData)
       || (typeof AboutMeData !== "undefined" && AboutMeData)
