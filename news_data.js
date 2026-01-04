@@ -16,7 +16,7 @@ const newsData = [
   },
   {
     date: "2023-07-02",
-    text: "Started UC Berkeley Summer Session."
+    text: "Started UC Berkeley Summer Program."
   },
   {
     date: "2021-09-01",
