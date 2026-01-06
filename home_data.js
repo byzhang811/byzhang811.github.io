@@ -49,7 +49,7 @@ const homeData = {
             role: "Algorithm Engineering Intern, Research Department",
             details: [
                 "Deployed SAM (ViT-B) for an interactive platform; migrated PyTorch → ONNX Runtime with graph optimizations",
-                "GPU profiling + FP16 inference tuning reduced p95 latency (210ms → 125ms) and stabilized VRAM usage (7.6GB → 5.9GB) under concurrency (24)",
+                "GPU profiling + FP16 inference tuning reduced p95 latency (210ms → 125ms) and stabilized VRAM usage (7.6GB → 5.9GB) under concurrency",
             ]
         },
         {
