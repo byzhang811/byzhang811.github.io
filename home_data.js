@@ -25,7 +25,7 @@ const homeData = {
             period: "Sept. 2025 - Present",
             school: "Boston University (BU)",
             degree: "M.S. Student in Electrical and Computer Engineering",
-            advisor: "MS. Thesis/Project Advisor: Prof. Janusz Konrad",
+            advisor: 'MS. Thesis & Project Advisor: <a href="https://sites.bu.edu/jkonrad/students/" target="_blank" rel="noopener noreferrer">Prof. Janusz Konrad</a>',
             details: ["GPA: 3.65/4.0", "Courses: MS Project, Deep Learning, Intro to Embedded Systems, Product design"] 
         },
         {
